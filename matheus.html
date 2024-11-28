@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Perfil Interativo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="card" id="profileCard">
+            <div class="card-body text-center">
+
+                <img src="https://via.placeholder.com/150" alt="Imagem de Perfil" id="profileImage" class="rounded-circle mb-3" style="width:  150px;">
+                <h3 id="profileName">Nome: Meu Perfil</h3>
+                <p id="profileAge">Idade: 18</p>
+
+                <h5>Hobbies:</h5>
+                <ul id="hobbiesList" class="list-group mb-3">
+                    <li class="list-group-item">Leitura</li>
+                    <li class="list-group-item">Esportes</li>
+                    <li class="list-group-item">Música</li>
+                </ul>
+
+                <button class="btn btn-primary me-2" onclick="alterarNome()">Alterar Nome</button>
+                <button class="btn btn-primary me-2" onclick="alterarIdade()">Alterar Idade</button>
+                <button class="btn btn-success me-2" onclick="adicionarHobby()">Adicionar Hobby</button>
+                <button class="btn btn-warning me-2" onclick="mudarCorDeFundo()">Mudar Cor de Fundo</button>
+
+            </div>
+        </div>
+    </div>
+    
+    <script>
+       // Função para alterar o nome do perfil
+function alterarNome(){
+    // Solicita ao usuário um novo nome através de um prompt
+    const novoNome = prompt("Digite o novo nome:");
+    // Se o usuário fornecer um nome, atualiza o conteúdo do elemento com id "profileName"
+    if (novoNome){
+        document.getElementById("profileName").textContent = "Nome: " + novoNome;
+    }
+}
+
+// Função para alterar a idade do perfil
+function alterarIdade(){
+    // Solicita ao usuário uma nova idade através de um prompt
+    const novaIdade = prompt("Digite a nova idade:");
+    // Se o usuário fornecer uma idade, atualiza o conteúdo do elemento com id "profileAge"
+    if (novaIdade){
+        document.getElementById("profileAge").textContent = "Idade: " + novaIdade;
+    }
+}        
+
+// Função para adicionar um novo hobby à lista
+function adicionarHobby(){
+    // Solicita ao usuário um novo hobby através de um prompt
+    const novoHobby = prompt("Digite um novo hobby");
+    // Se o usuário fornecer um hobby, cria um novo item de lista (li) e adiciona à lista de hobbies
+    if(novoHobby){
+        const li = document.createElement("li");
+        li.textContent = novoHobby;
+        li.className = "list-group-item"; // Atribui uma classe para estilo do item
+        document.getElementById("hobbiesList").appendChild(li); // Adiciona o item à lista de hobbies
+    }
+}
+
+// Função para remover um hobby da lista (não utilizada no código atual)
+function removerHobby(li){
+    // Remove um item da lista de hobbies
+    document.getElementById("hobbiesList").removeChild(li);
+}
+
+// Função para mudar a cor de fundo do cartão de perfil
+function mudarCorDeFundo(){
+    // Define uma nova paleta de cores possíveis para o fundo
+    const cores = ["#F0E68C", "#98FB98", "#ADD8E6", "#FFB6C1", "#D3D3D3"];  // Tons suaves de amarelo, verde, azul, rosa e cinza
+
+    // Escolhe uma cor aleatória do array de cores
+    const corAleatoria = cores[Math.floor(Math.random() * cores.length)];
+
+    // Aplica a cor escolhida como fundo do cartão de perfil
+    document.getElementById("profileCard").style.backgroundColor = corAleatoria;
+}
+    </script>
+
+    <script src="http://cdn.delivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    
+</body>
+</html>
